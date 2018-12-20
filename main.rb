@@ -1,9 +1,8 @@
+require_relative 'lib/test'
 
-require_relative "test"
+system 'cls'
 
-system "cls"
-
-puts "Добрый день! Как Вас зовут?"
+puts 'Добрый день! Как Вас зовут?'
 
 my_name = STDIN.gets.chomp
 
@@ -19,7 +18,7 @@ until test.finished?
   test.check(user_answer)
 end
 
-system "cls"
+system 'cls'
 
 print "#{my_name}, результат теста (всего баллов - #{test.points}):\n"
 
