@@ -7,18 +7,22 @@ class Test
 
     @questions = []
     @answers = []
+  end
 
-    # current_path = File.dirname(__FILE__)
-    file_path_q = "#{__dir__}/../data/questions.txt"
-    file_path_a = "#{__dir__}/../data/answers.txt"
+  def make_questions(file_name)
+    nil unless File.exist?(file_name)
 
-    q = File.new(file_path_q, 'r:UTF-8')
-    @questions = q.readlines
-    q.close
+    File.open(file_name, 'r:UTF-8') do
+    |file| @questions = file.readlines
+    end
+  end
 
-    a = File.new(file_path_a, 'r:UTF-8')
-    @answers = a.readlines
-    a.close
+  def make_answers(file_name)
+    nil unless File.exist?(file_name)
+
+    File.open(file_name, 'r:UTF-8') do
+    |file| @answers = file.readlines
+    end
   end
 
   def finished?
@@ -30,11 +34,9 @@ class Test
   end
 
   def check(user_answer)
-    @user_input = user_answer
-
-    if @user_input == 1
+    if user_answer == 1
       @points += 2
-    elsif @user_input == 3
+    elsif user_answer == 3
       @points += 1
     end
 
