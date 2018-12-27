@@ -13,7 +13,7 @@
 
 Необходима версия Ruby 2.x.x
 
-  >**ruby** main.rb
+  `ruby main.rb`
   
 <h3>Для чего / кого</h3>
 

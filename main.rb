@@ -11,10 +11,7 @@ my_name = STDIN.gets.chomp
 
 print "\nПриветствуем Вас, #{my_name}, давайте приступим к тесту\n"
 
-test = Test.new
-
-test.make_questions(file_path_q)
-test.make_answers(file_path_a)
+test = Test.new(file_path_q, file_path_a)
 
 until test.finished?
   puts test.current_question
@@ -28,4 +25,4 @@ system 'cls'
 
 print "#{my_name}, результат теста (всего баллов - #{test.points}):\n"
 
-puts test.print_result
+puts test.results

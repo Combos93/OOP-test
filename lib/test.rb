@@ -1,28 +1,27 @@
 class Test
   attr_reader :points
 
-  def initialize
-    @current_question = 0
+  def initialize(list_questions, list_answers)
     @points = 0
+    @current_question = 0
 
     @questions = []
     @answers = []
+
+    make_questions(list_questions)
+    make_answers(list_answers)
   end
 
   def make_questions(file_name)
     nil unless File.exist?(file_name)
 
-    File.open(file_name, 'r:UTF-8') do
-    |file| @questions = file.readlines
-    end
+    File.open(file_name, 'r:UTF-8') {|file| @questions = file.readlines}
   end
 
   def make_answers(file_name)
     nil unless File.exist?(file_name)
 
-    File.open(file_name, 'r:UTF-8') do
-    |file| @answers = file.readlines
-    end
+    File.open(file_name, 'r:UTF-8') {|file| @answers = file.readlines}
   end
 
   def finished?
@@ -43,7 +42,7 @@ class Test
     @current_question += 1
   end
 
-  def print_result
+  def results
     case @points
     when 0..3
       @answers[6]
