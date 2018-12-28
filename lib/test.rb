@@ -12,16 +12,12 @@ class Test
     make_answers(list_answers)
   end
 
-  def make_questions(file_name)
-    nil unless File.exist?(file_name)
-
-    File.open(file_name, 'r:UTF-8') {|file| @questions = file.readlines}
+  def make_questions(file_path)
+    @questions = File.readlines(file_path, chomp: true)
   end
 
-  def make_answers(file_name)
-    nil unless File.exist?(file_name)
-
-    File.open(file_name, 'r:UTF-8') {|file| @answers = file.readlines}
+  def make_answers(file_path)
+    @answers = File.readlines(file_path, chomp: true)
   end
 
   def finished?
